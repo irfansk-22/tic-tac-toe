@@ -18,7 +18,6 @@ const winningMessageTextElement = document.querySelector('[data-winning-message-
 let circleTurn;
 
 startGame();
-
 restartButton.addEventListener('click', startGame);
 
 function startGame() {
@@ -26,7 +25,7 @@ function startGame() {
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS);
         cell.classList.remove(CIRCLE_CLASS);
-        cell.removeEventListener('click', handleClick); //why we are removing event listener and in the next step adding it
+        cell.removeEventListener('click', handleClick);
         cell.addEventListener('click', handleClick, {once: true});
         // once: true means only ever fire this event listener once so once we click on the cell its gonna 
         //fire again 
@@ -35,24 +34,20 @@ function startGame() {
     winningMessageElement.classList.remove('show');
 }
 
-function handleClick(e) {
+function handleClick(event) {
 
-    const cell = e.target;
+    const cell = event.target;
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
-    //placeMark
     placeMark(cell, currentClass);
+
     //Check For win
     if(checkWin(currentClass)) {
-        // alert("winner");
         endGame(false);
-    }
-    //check for draw 
-    else if(isDraw()) {
+    } else if(isDraw()) {
         endGame(true);
     } else {
-    //switch turns
-    swapTurns();
-    setBoardHoverClass();
+        swapTurns();
+        setBoardHoverClass();
     }
 }
 
@@ -92,10 +87,39 @@ function setBoardHoverClass() {
     }
 }
 
+// Game Logic
 function checkWin(currentClass) {
     return WINNING_COMBINATIONS.some(combination => {
         return combination.every(index => {
             return cellElements[index].classList.contains(currentClass);
         });
     });
-}   
+}
+
+
+/******** SOCIAL ICONS SETTINGS **********/
+// This setting has a bug we'll fix it later 
+
+let icons = document.querySelector('.icon-bar');
+let arrowToHide = document.querySelector(".left-arrow");
+let arrowToShow = document.querySelector(".right-arrow");
+
+icons.addEventListener('mouseover', function () {
+    arrowToHide.classList.add("show-left-arrow");
+});
+
+icons.addEventListener('mouseout', function() {
+    arrowToHide.classList.remove("show-left-arrow");
+});
+
+//Adding Event listener to left arrow
+arrowToHide.addEventListener("click", function() {
+    icons.classList.add('hide-icon-bar');
+    arrowToShow.classList.add('show-right-arrow');
+});
+
+//Adding event listener to right arrow
+arrowToShow.addEventListener('click', function() {
+    arrowToHide.classList.remove('show-right-arrow');
+    icons.classList.remove('hide-icon-bar');
+});
