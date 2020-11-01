@@ -7,34 +7,44 @@
 }
 
 :root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * 0.9);
+
+    /* COMMON COLORS */
     --primary-color: rgb(223, 252, 223);
     --secondary-color: rgb(22, 172, 134);
     --board-color: palegreen;
     --elements-color: rgb(255, 129, 107);
     --elements-hover-color: rgb(204, 133, 121); 
-    --cell-size: 100px;
-    --mark-size: calc(var(--cell-size) * 0.9);
 }
 
 body {
     background-color: var(--primary-color);
     font-family: 'Itim', cursive;
     text-align: center;
+    overflow-x: hidden;
 }
 
 h1 {
     color: var(--secondary-color);
     font-size: 3.5rem;
-    margin: 8vh auto;
+    margin-bottom: 2.5rem;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 .board {
     display: grid;
     justify-content: center;
     align-content: center;
-    justify-items: center;
-    align-items: center;
     grid-template-columns: repeat(3, auto);
+    margin-bottom: 2.5rem;
 }
 
 .cell {
@@ -80,6 +90,13 @@ h1 {
 .cell.circle::before {
     background-color: var(--elements-color);
 }
+
+
+/* 
+    NOTE: We have used 'not' selector here it will not apply the affect if the cell already
+    has .x class or .circle class
+
+*/
 
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after,
@@ -166,11 +183,16 @@ h1 {
     display: flex;
 }
 
+/*************** FOOTER ****************/
+.copyright {
+    opacity: .8;
+}
+
 /*********** SOCIAL MEDIA ICONS ************/
 
 .icon-bar {
     position: fixed;
-    top: 55vh;
+    top: 50vh;
     left: 0;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -239,9 +261,14 @@ h1 {
     visibility: visible;
 }
 
-/* Media Query Section*/
+/************* Media Query Section ************/
 
 @media (max-width: 650px) {
+    
+    h1 {
+        font-size: 2.35rem;
+    }
+
     .icon-bar {
         display: none;
     }

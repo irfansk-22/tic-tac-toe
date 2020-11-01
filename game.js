@@ -14,7 +14,7 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
 const restartButton = document.getElementById('restart-btn');
 const winningMessageElement = document.getElementById('winning-message');
-const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
+const winningMessageText = document.querySelector('[winning-message-text]');
 let circleTurn;
 
 startGame();
@@ -25,7 +25,6 @@ function startGame() {
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS);
         cell.classList.remove(CIRCLE_CLASS);
-        cell.removeEventListener('click', handleClick);
         cell.addEventListener('click', handleClick, {once: true});
         // once: true means only ever fire this event listener once so once we click on the cell its gonna 
         //fire again 
@@ -53,9 +52,9 @@ function handleClick(event) {
 
 function endGame(draw) {
     if(draw) {
-        winningMessageTextElement.innerText = 'Draw!';
+        winningMessageText.innerText = 'Draw!';
     } else {
-        winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins`;
+        winningMessageText.innerText = `${circleTurn ? "O's" : "X's"} Wins`;
     }
     winningMessageElement.classList.add('show');
 }

@@ -1,10 +1,17 @@
+<!-- 
+author: Irfan Shaikh
+date: 01-11-2020
+
+//Built while coding along kyle(Web Dev Simplified).
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="icon" href="favicon.ico">
     <script src="game.js" defer></script>
     <title>Tic Tac Toe</title>
@@ -15,24 +22,33 @@
 </head>
 
 <body>
-    <h1>Tic Tac Toe Game</h1>
-    <div class="board" id="board">
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-    </div>
+    <!-- MAIN SECTION -->
+    <main>
+        <h1>Tic Tac Toe Game</h1>
+        <div class="board" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <!-- footer -->
+        <footer>
+            <small>&copy; Irfan Shaikh</small>
+        </footer>
+    </main>
+
+    <!-- WINNING MESSAGE OVERLAY -->
     <div class="winning-message" id="winning-message">
-        <div data-winning-message-text></div>
+        <div winning-message-text></div>
         <button id="restart-btn">Restart</button>
     </div>
 
-    <!-- Social Media Icons -->
+    <!-- SOCIAL MEDIA ICONS -->
     <i class="fas fa-caret-right right-arrow"></i>
     <div class="icon-bar">
         <a href="https://www.linkedin.com/in/irfansk/" class="linkedin"><i class="fa fa-linkedin"></i></a>
@@ -41,6 +57,7 @@
         <a href="https://www.instagram.com/itsirfansk/" class="insta"><i class="fa fa-instagram"></i></a>
         <i class="fas fa-caret-left left-arrow"></i>
     </div>
+
 </body>
 
 </html>
